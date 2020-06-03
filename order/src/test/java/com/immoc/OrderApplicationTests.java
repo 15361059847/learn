@@ -13,4 +13,9 @@ public class OrderApplicationTests {
 	public void contextLoads() {
 	}
 
+	@Test
+	public void test() {
+		System.out.println("123123");
+	}
+
 }
