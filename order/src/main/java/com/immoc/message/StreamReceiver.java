@@ -12,25 +12,25 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class StreamReceiver {
 
+//    @StreamListener(value = StreamClient.INPUT1)
+//    public void process(String message){
+//        log.info("StreamReceiver: {} ",message);
+//    }
+
+    /**
+     * 接收OrderDTO对象消息
+     * @param message
+     */
     @StreamListener(value = StreamClient.INPUT1)
-    public void process(String message){
-        log.info("StreamReceiver: {} ",message);
+    @SendTo(value = StreamClient.INPUT2)
+    public String process(OrderDTO message){
+        log.info("StreamReceiver: {} ",message.getOrderId());
+        return "received";
     }
 
-//    /**
-//     * 接收OrderDTO对象消息
-//     * @param message
-//     */
-//    @StreamListener(value = StreamClient.INPUT1)
-//    @SendTo(value = StreamClient.INPUT2)
-//    public String process(OrderDTO message){
-//        log.info("StreamReceiver: {} ",message.getOrderId());
-//        return "received";
-//    }
 
-
-//    @StreamListener(value = StreamClient.INPUT2)
-//    public void process2(String message){
-//        log.info("StreamReceiver2: {} ",message);
-//    }
+    @StreamListener(value = StreamClient.INPUT2)
+    public void process2(String message){
+        log.info("StreamReceiver2: {} ",message);
+    }
 }

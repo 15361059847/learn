@@ -11,10 +11,7 @@ import com.immoc.vo.ProductVo;
 import com.immoc.vo.ResultVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,7 +84,7 @@ public class ProductController {
      * @param cartDTOList
      * @return
      */
-    @GetMapping("/decreaseStock")
+    @PostMapping("/decreaseStock")
     public void decreaseStock(@RequestBody List<CartDTO> cartDTOList){
          productService.decreaseStock(cartDTOList);
     }

@@ -15,21 +15,21 @@ public class SendMessageController {
     @Autowired
     private StreamClient streamClient;
 
-    @GetMapping("/sendMessage")
-    public void process(){
-        String message = "date" + new Date();
-        streamClient.input1().send(
-                MessageBuilder.withPayload(message).build()
-        );
-    }
-
-
 //    @GetMapping("/sendMessage")
 //    public void process(){
-//        OrderDTO orderDTO = new OrderDTO();
-//        orderDTO.setOrderId("123456");
+//        String message = "date" + new Date();
 //        streamClient.input1().send(
-//                MessageBuilder.withPayload(orderDTO).build()
+//                MessageBuilder.withPayload(message).build()
 //        );
 //    }
+
+
+    @GetMapping("/sendMessage")
+    public void process(){
+        OrderDTO orderDTO = new OrderDTO();
+        orderDTO.setOrderId("123456");
+        streamClient.input1().send(
+                MessageBuilder.withPayload(orderDTO).build()
+        );
+    }
 }
